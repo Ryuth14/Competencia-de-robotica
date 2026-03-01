@@ -49,7 +49,7 @@ body{
     position: relative;
     gap: 50px;
     width: fit-content;
-    margin-top: -70vh;
+    margin-top: -75vh;
     margin-left: 5%;
     z-index: 20; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
 }
