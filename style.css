@@ -30,8 +30,18 @@ body{
     100% { opacity: 0.2; } /*Casi invisible */
 }
 
+.instrucciones{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    display: block;
+}
+
+
 /*Adapta la imagen de la pagina 2 a cualquier resolucion*/
-#categorias{
+#pagina_2{
     position: relative;
     background-position: center;
     background-size: cover;
