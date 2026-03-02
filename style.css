@@ -57,11 +57,12 @@ body{
     justify-content: space-between;
     align-items: center;
     position: relative;
-    gap: 50px;
+    gap: 3vw;
     width: fit-content;
-    margin-top: -75vh;
+    margin-top: -37%;
     margin-left: 5%;
-    z-index: 20; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
+    z-index: 30; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
+    transform: scale(0.8);
 }
 /*El "width: fit-content;" es porque el gap no reducia el espacio entre las carpetas y se tuvo 
 que forzar el contenedor para que sea muy pequeño y que el gap sea el que defina la distancia*/
