@@ -4,7 +4,7 @@ body{
 }
 
 /*Adapta la imagen de la portada a cualquier resolucion*/
-#portada{
+#portada_imagen{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -30,7 +30,7 @@ body{
     100% { opacity: 0.2; } /*Casi invisible */
 }
 
-.instrucciones{
+.instrucciones_texto{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,7 +41,7 @@ body{
 
 
 /*Adapta la imagen de la pagina 2 a cualquier resolucion*/
-#pagina_2{
+#pagina_categorias{
     position: relative;
     background-position: center;
     background-size: cover;
@@ -51,18 +51,25 @@ body{
     display: block;
 }
 
+#categorias{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: block;
+}
+
 /*Pone las carpetas alineadas una al lado de la otra y las ubica en el centro de la pagina 2*/
 .carpetas_contenedor{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    gap: 3vw;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    gap: 50px;
     width: fit-content;
-    margin-top: -37%;
-    margin-left: 5%;
     z-index: 30; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
-    transform: scale(0.8);
+    transform: translateY(-50%) scale(0.8);
 }
 /*El "width: fit-content;" es porque el gap no reducia el espacio entre las carpetas y se tuvo 
 que forzar el contenedor para que sea muy pequeño y que el gap sea el que defina la distancia*/
