@@ -141,7 +141,31 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     transform: translate(-50%, -50%);
 }
 
-.opcion_imagen{
+.opcion_a{
     height: auto;
     cursor: pointer;
+}
+.opcion_b{
+    height: auto;
+    cursor: pointer;
+}
+.opcion_c{
+    height: auto;
+    cursor: pointer;
+}
+
+.opciones_incorrectas1_contenedor{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    top: 58%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+}
+
+.cartel_incorrecto{
+    position: absolute;
+    top: 76%;
+    left: 60%;
 }
