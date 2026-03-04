@@ -26,7 +26,7 @@ body{
 /*Ubica la imagen de la lupa*/
 #lupa_contenedor{
     position: absolute;
-    bottom: -1vh;
+    bottom: -0vh;
     left: 0%;
 }
 
