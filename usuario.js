@@ -62,8 +62,6 @@ opcionA[0].addEventListener("click", function() {
 
 })
 
-addEventListener("click", () => respuestaIncorrecta(opcionAincorrecto));
-
 //Opcion B
 opcionB[0].addEventListener("click", function() {
     console.log("Opción de fotosíntesis seleccionada");
