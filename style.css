@@ -13,11 +13,20 @@ body{
     display: block;
 }
 
+#portada_laboratorio{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    display: block;
+}
+
 
 /*Ubica el texto del indicador en el centro y se le da la propiedad de animacion */
 #indicador_lupa{
     position: absolute;
-    bottom: 20px;
+    bottom: 1%;
     left: 50%;
     transform: translateX(-50%); /*Hace que se centre exacto*/
     animation: parpadeo 0.5s infinite;
@@ -64,7 +73,7 @@ body{
     position: absolute;
     top: 50%;
     left: 5%;
-    gap: 50px;
+    gap: 7vh;
     width: fit-content;
     z-index: 30; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
     transform: translateY(-50%) scale(0.8);
@@ -96,7 +105,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
 
 #indicador_empezar{
     position: absolute;
-    bottom: 40px;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%); /*Hace que se centre exacto*/
     animation: parpadeo 0.5s infinite;
@@ -108,8 +117,31 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     left: 5%;
 }
 
-.pista_boton{
+.boton_pista{
     position: absolute;
     top: 73%;
     left: 13.8%;
+    cursor: pointer;
+}
+
+.boton_X{
+    position: absolute;
+    top: 11%;
+    left: 85%;
+    cursor: pointer;
+}
+
+.opciones_contenedor{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4vh;
+    top: 58%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+}
+
+.opcion_imagen{
+    height: auto;
+    cursor: pointer;
 }
