@@ -32,11 +32,25 @@ body{
     animation: parpadeo 0.5s infinite;
 }
 
-/*Ubica la imagen de la lupa*/
-#lupa_contenedor{
+/* Ubica el contenedor de la lupa */
+#lupa_contenedor {
     position: absolute;
-    bottom: -0vh;
+    bottom: 0%;
     left: 0%;
+
+    /* Área fija respecto a la pantalla */
+    width: 30vw; 
+    height: 40vh; 
+}
+
+/* Imagen de la lupa dentro del contenedor */
+#lupa_contenedor img {
+    width: 100%;
+    height: 100%;
+    
+    /* fill estira la imagen para llenar el contenedor */
+    object-fit: fill; 
+    display: block;
 }
 
 /*Como deberia de ser la animacion del indicador*/
