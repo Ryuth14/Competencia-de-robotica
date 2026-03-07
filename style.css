@@ -13,17 +13,36 @@ body{
     display: block;
 }
 
-.pantalla_inicio{
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
+/* Ubica el contenedor de la lupa */
+#lupa_contenedor {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
     overflow: hidden;
+
+    /* Fixed area relative to the screen */
+    width: 40vw;
+    height: 40vh;
 }
 
-#lupa{
+/* Image of the magnifying glass inside the container */
+#lupa_contenedor img {
+    width: 100%;
+    height: 100%;    
+    /* fill stretches the image to fill the container */
+    object-fit: fill;
+}
+
+#lupa_contenedor a {
     position: absolute;
-    bottom: -2%;
-    left: 0%;
+
+    /* Adjust to match the magnifying glass */
+    top: 5%; 
+    left: 50%;
+    width: 45%; 
+    height: 35%;
+    
+    border-radius: 50%;
 }
 
 /*Ubica el texto del indicador en el centro y se le da la propiedad de animacion */
@@ -87,7 +106,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     display: block;
 }
 
-#portada_laboratorio{
+.portada_laboratorio{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -118,12 +137,14 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
 }
 
 .salida_boton{
+    display: flexbox;
     position: absolute;
     top: 11%;
     left: 5%;
 }
 
 .boton_pista{
+    display: flexbox;
     position: absolute;
     top: 73%;
     left: 13.8%;
@@ -131,47 +152,55 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
 }
 
 .boton_X{
+    display: flexbox;
     position: absolute;
     top: 11%;
     left: 85%;
     cursor: pointer;
 }
 
+.boton_siguiente{
+    display: flexbox;
+    position: absolute;
+    top: 93%;
+    left: 80%;
+    cursor: pointer;
+    z-index: 10;
+}
+
 .opciones_contenedor{
-    position: absolute;
     display: flex;
+    position: absolute;
     flex-direction: column;
     gap: 4vh;
     top: 58%;
     left: 72%;
+    height: auto;
+    cursor: pointer;
     transform: translate(-50%, -50%);
 }
 
-.opcion_a{
-    height: auto;
-    cursor: pointer;
-}
-.opcion_b{
-    height: auto;
-    cursor: pointer;
-}
-.opcion_c{
-    height: auto;
-    cursor: pointer;
-}
-
-.opciones_incorrectas1_contenedor{
+.cartel_correcto{
+    display: flexbox;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 4vh;
-    top: 58%;
-    left: 72%;
-    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .cartel_incorrecto{
+    display: flexbox;
     position: absolute;
-    top: 76%;
-    left: 60%;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#recompensa_pregunta1{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    display: block;
 }
