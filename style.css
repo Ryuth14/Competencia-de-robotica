@@ -1,10 +1,10 @@
 /*Quita el margin de las imagenes*/
-body{
+body {
     margin: 0;
 }
 
 /*Adapta la imagen de la portada a cualquier resolucion*/
-.portada_imagen{
+.portada_imagen {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@ body{
 /* Image of the magnifying glass inside the container */
 #lupa_contenedor img {
     width: 100%;
-    height: 100%;    
+    height: 100%;
     /* fill stretches the image to fill the container */
     object-fit: fill;
 }
@@ -37,32 +37,45 @@ body{
     position: absolute;
 
     /* Adjust to match the magnifying glass */
-    top: 5%; 
+    top: 5%;
     left: 50%;
-    width: 45%; 
+    width: 45%;
     height: 35%;
-    
+
     border-radius: 50%;
 }
 
 /*Ubica el texto del indicador en el centro y se le da la propiedad de animacion */
-#indicador_lupa{
+#indicador_lupa {
     position: absolute;
     bottom: 1%;
     left: 50%;
-    transform: translateX(-50%); /*Hace que se centre exacto*/
+    transform: translateX(-50%);
+    /*Hace que se centre exacto*/
     animation: parpadeo 0.5s infinite;
 }
 
 /*Como deberia de ser la animacion del indicador*/
-@keyframes parpadeo{
-    0% { opacity: 0.2; } /* Casi invisible */
-    50% { opacity: 1; }   /*Visible */
-    100% { opacity: 0.2; } /*Casi invisible */
+@keyframes parpadeo {
+    0% {
+        opacity: 0.2;
+    }
+
+    /* Casi invisible */
+    50% {
+        opacity: 1;
+    }
+
+    /*Visible */
+    100% {
+        opacity: 0.2;
+    }
+
+    /*Casi invisible */
 }
 
 /*Adapta la imagen de la pagina 2 a cualquier resolucion*/
-#pagina_categorias{
+#pagina_categorias {
     position: relative;
     background-position: center;
     background-size: cover;
@@ -73,7 +86,7 @@ body{
 }
 
 /*Adapta el contenedor de las carpetas a cualquier resolucion, se le da un gap para que haya espacio entre las carpetas y se ubica en el centro de la pagina 2*/
-#categorias{
+#categorias {
     position: relative;
     height: 100vh;
     width: 100%;
@@ -81,7 +94,7 @@ body{
 }
 
 /*Pone las carpetas alineadas una al lado de la otra y las ubica en el centro de la pagina 2*/
-.carpetas_contenedor{
+.carpetas_contenedor {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,17 +103,19 @@ body{
     left: 5%;
     gap: 7vh;
     width: fit-content;
-    z-index: 30; /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
+    z-index: 30;
+    /*Para que las imagenes de las carpetas esten por encima de la imagen de fondo*/
     transform: translateY(-50%) scale(0.9);
 }
 
 /*Animacion de agrandado con transicion suave*/
-.carpeta{
+.carpeta {
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     will-change: transform;
     display: inline-block;
 }
-.carpeta:hover{
+
+.carpeta:hover {
     transform: scale(1.12);
 }
 
@@ -108,7 +123,7 @@ body{
 que forzar el contenedor para que sea muy pequeño y que el gap sea el que defina la distancia*/
 
 /*Adapta la imagen de las instrucciones a cualquier resolucion*/
-.instrucciones_imagen{
+.instrucciones_imagen {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -117,7 +132,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     display: block;
 }
 
-.portada_laboratorio{
+.portada_laboratorio {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,40 +143,42 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
 
 
 /*Ubica los botones de adelante y atras en la pagina de instrucciones*/
-.boton_adelante{
+.boton_adelante {
     position: absolute;
     top: 45%;
     right: 2%;
 }
-.boton_atras{
+
+.boton_atras {
     position: absolute;
     top: 45%;
     left: 2%;
 }
 
-#indicador_empezar{
+#indicador_empezar {
     position: absolute;
     bottom: 5%;
     left: 50%;
-    transform: translateX(-50%); /*Hace que se centre exacto*/
+    transform: translateX(-50%);
+    /*Hace que se centre exacto*/
     animation: parpadeo 0.5s infinite;
 }
 
-#indicador_empezar_cancha{
+#indicador_empezar_cancha {
     position: absolute;
     bottom: 5%;
     left: 70%;
     animation: parpadeo 0.5s infinite;
 }
 
-.salida_boton{
+.salida_boton {
     display: flexbox;
     position: absolute;
     top: 11%;
     left: 5%;
 }
 
-.boton_pista{
+.boton_pista {
     display: flexbox;
     position: absolute;
     top: 73%;
@@ -169,7 +186,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     cursor: pointer;
 }
 
-.boton_X{
+.boton_X {
     display: flexbox;
     position: absolute;
     top: 11%;
@@ -177,7 +194,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     cursor: pointer;
 }
 
-.boton_siguiente{
+.boton_siguiente {
     display: flexbox;
     position: absolute;
     top: 93%;
@@ -186,7 +203,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     z-index: 10;
 }
 
-.opciones_contenedor{
+.opciones_contenedor {
     display: flex;
     position: absolute;
     flex-direction: column;
@@ -198,7 +215,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     transform: translate(-50%, -50%);
 }
 
-.cartel_correcto{
+.cartel_correcto {
     display: flexbox;
     position: absolute;
     top: 100%;
@@ -206,7 +223,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     transform: translateX(-50%);
 }
 
-.cartel_incorrecto{
+.cartel_incorrecto {
     display: flexbox;
     position: absolute;
     top: 100%;
@@ -214,7 +231,7 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     transform: translateX(-50%);
 }
 
-#recompensa_pregunta1{
+.recompensa_preguntas {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
