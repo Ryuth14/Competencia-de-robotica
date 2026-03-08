@@ -19,19 +19,20 @@ const cartelCorrecto = document.getElementsByClassName("cartel_correcto");
 const cartelIncorrecto = document.getElementsByClassName("cartel_incorrecto");
 
 // Inicialmente, el botón de pista y el cartel de incorrecto están ocultos
-opcionAbase[0].style.display = "none";
-opcionCbase[0].style.display = "none";
-opcionBcorrecto[0].style.display = "none";
-opcionCincorrecto[0].style.display = "none";
 botonSiguiente[0].style.display = "none";
 botonX[0].style.display = "none";
 cartelIncorrecto[0].style.display = "none";
 cartelCorrecto[0].style.display = "none";
+opcionAincorrecto[0].style.display = "none";
+opcionAbase[0].style.display = "none";
+opcionBcorrecto[0].style.display = "none";
+opcionCbase[0].style.display = "none"
+opcionCincorrecto[0].style.display = "none"
 
 
 // Evento para el botón de pista
 botonPista[0].addEventListener("click", function () {
-    imagenPrincipal.src = "Images/Pista_pregunta1.png";
+    imagenPrincipal.src = "Images/pregunta1-opciones/carpeta-roja/Pista pregunta 1.png";
 
     botonPista[0].style.display = "none";
     botonSalida[0].style.display = "none";
@@ -50,7 +51,7 @@ botonPista[0].addEventListener("click", function () {
 
 // Evento para el botón de cerrar pista
 botonX[0].addEventListener("click", function () {
-    imagenPrincipal.src = "Images/Laboratorio_pregunta1.png";
+    imagenPrincipal.src = "Images/pregunta1-opciones/carpeta-roja/Pregunta 1.png";
 
     botonPista[0].style.display = "block";
     botonSalida[0].style.display = "block";
@@ -116,20 +117,3 @@ opcionC[0].addEventListener("click", function () {
 });
 
 
-botonPista[0].addEventListener("click", function () {
-    imagenPrincipal.src = "Images/Pista_pregunta2.png";
-
-    botonPista[0].style.display = "none";
-    botonSalida[0].style.display = "none";
-    opcionA[0].style.display = "none";
-    opcionB[0].style.display = "none";
-    opcionC[0].style.display = "none";
-    opcionAbase[0].style.display = "none";
-    opcionAincorrecto[0].style.display = "none";
-    opcionBcorrecto[0].style.display = "none";
-    opcionCincorrecto[0].style.display = "none";
-    opcionCbase[0].style.display = "none";
-    cartelCorrecto[0].style.display = "none";
-    cartelIncorrecto[0].style.display = "none";
-    botonX[0].style.display = "block";
-});
