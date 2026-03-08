@@ -239,3 +239,24 @@ que forzar el contenedor para que sea muy pequeño y que el gap sea el que defin
     height: 100vh;
     display: block;
 }
+
+.opciones_descifrar_contenedor {
+    display: flexbox;
+    position: absolute;
+    top: 85%;
+    left: 72%;
+    height: auto;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.opciones_resuelto_contenedor {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    top: 62%;
+    left: 72%;
+    height: auto;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
