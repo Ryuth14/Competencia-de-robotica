@@ -1,119 +1,160 @@
+// ============================================================
+// usuario.js — Lógica genérica para todas las preguntas
+// Usa data-pista en la imagen principal para la ruta de pista.
+// Detecta opciones correctas/incorrectas por clase CSS.
+// ============================================================
+
 const imagenPrincipal = document.getElementById("portada_laboratorio");
-const botonSalida = document.getElementsByClassName("salida_boton");
-const botonPista = document.getElementsByClassName("boton_pista");
-const botonX = document.getElementsByClassName("boton_X");
-const botonSiguiente = document.getElementsByClassName("boton_siguiente");
+const botonSalida     = document.getElementsByClassName("salida_boton");
+const botonPista      = document.getElementsByClassName("boton_pista");
+const botonX          = document.getElementsByClassName("boton_X");
+const botonSiguiente  = document.getElementsByClassName("boton_siguiente");
+const cartelCorrecto  = document.getElementsByClassName("cartel_correcto");
+const cartelIncorrecto = document.getElementsByClassName("cartel_incorrecto");
+
+// Opciones visibles (las que el jugador puede hacer clic)
 const opcionA = document.getElementsByClassName("opcion_a");
 const opcionB = document.getElementsByClassName("opcion_b");
 const opcionC = document.getElementsByClassName("opcion_c");
-const opcionAbase = document.getElementsByClassName("opcion_a_base");
-const opcionBbase = document.getElementsByClassName("opcion_b_base");
-const opcionCbase = document.getElementsByClassName("opcion_c_base");
-const opcionAcorrecto = document.getElementsByClassName("opcion_a_correcto");
-const opcionBcorrecto = document.getElementsByClassName("opcion_b_correcto");
-const opcionCcorrecto = document.getElementsByClassName("opcion_c_correcto");
-const opcionAincorrecto = document.getElementsByClassName("opcion_a_incorrecto");
-const opcionBincorrecto = document.getElementsByClassName("opcion_b_incorrecto");
-const opcionCincorrecto = document.getElementsByClassName("opcion_c_incorrecto");
-const cartelCorrecto = document.getElementsByClassName("cartel_correcto");
-const cartelIncorrecto = document.getElementsByClassName("cartel_incorrecto");
 
-// Inicialmente, el botón de pista y el cartel de incorrecto están ocultos
-botonSiguiente[0].style.display = "none";
-botonX[0].style.display = "none";
+// Rutas de la pregunta y la pista leídas desde el HTML
+const rutaPregunta = imagenPrincipal.src;
+const rutaPista    = imagenPrincipal.dataset.pista;
+
+// Función genérica: detecta las imágenes de resultado dentro de un slot
+// Busca clases que contengan "_correcto", "_incorrecto" o "_base"
+function getSlotImages(slot) {
+    const imgs = slot.querySelectorAll("img");
+    let correcto   = null;
+    let incorrecto = null;
+    let base       = null;
+
+    imgs.forEach(img => {
+        const classes = img.className;
+        if (classes.includes("_correcto"))   correcto   = img;
+        else if (classes.includes("_incorrecto")) incorrecto = img;
+        else if (classes.includes("_base"))  base       = img;
+    });
+
+    return { correcto, incorrecto, base };
+}
+
+// Obtener los tres slots de opciones
+const slots     = document.querySelectorAll(".slot");
+const slotA     = slots[0];
+const slotB     = slots[1];
+const slotC     = slots[2];
+
+const imgsA = getSlotImages(slotA);
+const imgsB = getSlotImages(slotB);
+const imgsC = getSlotImages(slotC);
+
+// Estado inicial: ocultar elementos que no se muestran al inicio
+botonSiguiente[0].style.display  = "none";
+botonX[0].style.display          = "none";
 cartelIncorrecto[0].style.display = "none";
-cartelCorrecto[0].style.display = "none";
-opcionAincorrecto[0].style.display = "none";
-opcionAbase[0].style.display = "none";
-opcionBcorrecto[0].style.display = "none";
-opcionCbase[0].style.display = "none"
-opcionCincorrecto[0].style.display = "none"
+cartelCorrecto[0].style.display  = "none";
 
+// Ocultar variantes de resultado de cada slot al inicio
+[imgsA, imgsB, imgsC].forEach(({ correcto, incorrecto, base }) => {
+    if (correcto)   correcto.style.display   = "none";
+    if (incorrecto) incorrecto.style.display = "none";
+    if (base)       base.style.display       = "none";
+});
 
-// Evento para el botón de pista
+// ── BOTÓN PISTA ──────────────────────────────────────────────
 botonPista[0].addEventListener("click", function () {
-    imagenPrincipal.src = "Images/pregunta1-opciones/carpeta-roja/Pista pregunta 1.png";
+    imagenPrincipal.src = rutaPista;
 
-    botonPista[0].style.display = "none";
-    botonSalida[0].style.display = "none";
-    opcionA[0].style.display = "none";
-    opcionB[0].style.display = "none";
-    opcionC[0].style.display = "none";
-    opcionAbase[0].style.display = "none";
-    opcionAincorrecto[0].style.display = "none";
-    opcionBcorrecto[0].style.display = "none";
-    opcionCincorrecto[0].style.display = "none";
-    opcionCbase[0].style.display = "none";
-    cartelCorrecto[0].style.display = "none";
+    botonPista[0].style.display    = "none";
+    botonSalida[0].style.display   = "none";
+    cartelCorrecto[0].style.display  = "none";
     cartelIncorrecto[0].style.display = "none";
+
+    // Ocultar todas las imágenes de opciones mientras se ve la pista
+    [opcionA[0], opcionB[0], opcionC[0]].forEach(op => {
+        if (op) op.style.display = "none";
+    });
+    [imgsA, imgsB, imgsC].forEach(({ correcto, incorrecto, base }) => {
+        if (correcto)   correcto.style.display   = "none";
+        if (incorrecto) incorrecto.style.display = "none";
+        if (base)       base.style.display       = "none";
+    });
+
     botonX[0].style.display = "block";
 });
 
-// Evento para el botón de cerrar pista
+// ── BOTÓN CERRAR PISTA (X) ───────────────────────────────────
 botonX[0].addEventListener("click", function () {
-    imagenPrincipal.src = "Images/pregunta1-opciones/carpeta-roja/Pregunta 1.png";
+    imagenPrincipal.src = rutaPregunta;
 
-    botonPista[0].style.display = "block";
+    botonPista[0].style.display  = "block";
     botonSalida[0].style.display = "block";
-    opcionA[0].style.display = "block";
-    opcionB[0].style.display = "block";
-    opcionC[0].style.display = "block";
-    botonX[0].style.display = "none";
+    botonX[0].style.display      = "none";
     cartelIncorrecto[0].style.display = "none";
+
+    // Restaurar opciones originales
+    [opcionA[0], opcionB[0], opcionC[0]].forEach(op => {
+        if (op) op.style.display = "block";
+    });
+    [imgsA, imgsB, imgsC].forEach(({ correcto, incorrecto, base }) => {
+        if (correcto)   correcto.style.display   = "none";
+        if (incorrecto) incorrecto.style.display = "none";
+        if (base)       base.style.display       = "none";
+    });
 });
 
-//Opcion A incorrecto
+// ── FUNCIÓN GENÉRICA AL ELEGIR UNA OPCIÓN ───────────────────
+// elegida: {correcto, incorrecto, base} — el slot del botón pulsado
+// correctaFlag: true si este slot tiene _correcto (es la respuesta correcta)
+function handleOpcion(elegidaImgs, esCorrecta, opcionClickeada) {
+    // Ocultar los tres botones de opción
+    [opcionA[0], opcionB[0], opcionC[0]].forEach(op => {
+        if (op) op.style.display = "none";
+    });
+
+    // Para cada slot, mostrar la imagen de resultado correspondiente
+    [imgsA, imgsB, imgsC].forEach(slotImgs => {
+        const { correcto, incorrecto, base } = slotImgs;
+
+        // El slot elegido muestra su variante correcta o incorrecta
+        if (slotImgs === elegidaImgs) {
+            if (esCorrecta && correcto)   correcto.style.display = "block";
+            if (!esCorrecta && incorrecto) incorrecto.style.display = "block";
+        } else {
+            // Los slots no elegidos: si tienen _correcto lo muestran, si no tienen _correcto
+            // muestran su _base (si existe)
+            if (correcto) {
+                correcto.style.display = "block";  // siempre revelar la correcta
+            } else if (base) {
+                base.style.display = "block";
+            }
+        }
+    });
+
+    // Mostrar el cartel correspondiente
+    if (esCorrecta) {
+        cartelCorrecto[0].style.display = "block";
+    } else {
+        cartelIncorrecto[0].style.display = "block";
+    }
+
+    botonSiguiente[0].style.display = "block";
+    opcionClickeada.style.pointerEvents = "none";
+}
+
+// ── EVENTOS DE OPCIONES ──────────────────────────────────────
 opcionA[0].addEventListener("click", function () {
-    console.log("Opción de transpiración seleccionada");
+    const esCorrecta = !!imgsA.correcto;
+    handleOpcion(imgsA, esCorrecta, opcionA[0]);
+});
 
-    opcionA[0].style.display = "none";
-    opcionB[0].style.display = "none";
-    opcionC[0].style.display = "none";
-
-    opcionAincorrecto[0].style.display = "block";
-    opcionBcorrecto[0].style.display = "block";
-    opcionCbase[0].style.display = "block";
-
-    cartelIncorrecto[0].style.display = "block";
-    botonSiguiente[0].style.display = "block";
-
-    opcionA[0].style.pointerEvents = "none";
-})
-
-//Opcion B correcto
 opcionB[0].addEventListener("click", function () {
-    console.log("Opción de fotosíntesis seleccionada");
-
-    opcionA[0].style.display = "none";
-    opcionB[0].style.display = "none";
-    opcionC[0].style.display = "none";
-
-    opcionAbase[0].style.display = "block";
-    opcionBcorrecto[0].style.display = "block";
-    opcionCbase[0].style.display = "block";
-
-    cartelCorrecto[0].style.display = "block";
-    botonSiguiente[0].style.display = "block";
-
-    opcionB[0].style.pointerEvents = "none";
+    const esCorrecta = !!imgsB.correcto;
+    handleOpcion(imgsB, esCorrecta, opcionB[0]);
 });
 
-//Opcion C incorrecto
 opcionC[0].addEventListener("click", function () {
-    console.log("Opción de respiración celular seleccionada");
-
-    opcionA[0].style.display = "none";
-    opcionB[0].style.display = "none";
-    opcionC[0].style.display = "none";
-
-    opcionAbase[0].style.display = "block";
-    opcionBcorrecto[0].style.display = "block";
-    opcionCincorrecto[0].style.display = "block";
-
-    cartelIncorrecto[0].style.display = "block";
-    botonSiguiente[0].style.display = "block";
-
-    opcionC[0].style.pointerEvents = "none";
+    const esCorrecta = !!imgsC.correcto;
+    handleOpcion(imgsC, esCorrecta, opcionC[0]);
 });
-
-
